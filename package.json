@@ -1,5 +1,5 @@
 {
-  "name": "bem",
+  "name": "@please/bem",
   "version": "1.0.0",
   "description": "Lightweight utility to generate bem-like classnames",
   "main": "lib/index.js",
