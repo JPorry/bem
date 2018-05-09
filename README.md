@@ -22,6 +22,47 @@ or [yarn](https://yarnpkg.com/):
 yarn add @please/bem
 ```
 
-### Getting Started
+### Usage
 
-WIP
+```js
+import bem from '@please/bem';
+
+const menu = bem('menu', {'-active': true, '-disabled': false});
+console.log(menu.className); // menu menu-active
+
+const menuItem = menu('item', {'-highlighted': true, '-disabled': false}
+console.log(menuItem.className); // menu_item menu_item-highlighted
+```
+
+### API
+
+This library exports just one method:
+
+#### `bem(blockName, classObject)` 
+
+* *blockName* is a string with the name of the block.
+* *classObject* is an object where the keys are modifiers that will get added to the generated class name if the associated value is not falsy. If the key name starts with a `-` the blockName will be appended to the key name.
+
+This function returns another function with similar signature and a *className* property. Access this *className* property to get the generated class name.
+Use the returned function to provide en element name and another classObject and compose your selectors.
+
+
+#### `bem.withPrefix(prefix)`
+
+* *prefix* is a string that contains the prefix that you want to use.
+
+This function returns a prefixed version of *bem* that is always going to append the prefix to every Block or Element that you pass to the function.
+
+Example of usage:
+
+```js
+import bem from '@please/bem';
+
+const myBem = bem.withPrefix('bem');
+
+const menu = myBem('menu', {'-active': true, '-disabled': false});
+console.log(menu.className); // bem-menu bem-menu-active
+
+const menuItem = menu('item', {'-highlighted': true, '-disabled': false}
+console.log(menuItem.className); // bem-menu_item bem-menu_item-highlighted
+```
