@@ -9,26 +9,31 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "prepublish": "in-publish && npm run build || not-in-publish",
-    "build":
-      "npm run clean && npm run build:umd && npm run build:umd:min && npm run build:es && npm run build:commonjs",
+    "build": "npm run clean && npm run build:umd && npm run build:umd:min && npm run build:es && npm run build:commonjs",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "build:umd":
-      "cross-env NODE_ENV=development BABEL_ENV=build rollup -c -i src/index.js -o dist/bem.js",
-    "build:umd:min":
-      "cross-env NODE_ENV=production BABEL_ENV=buildProd rollup -c -i src/index.js -o dist/bem.min.js"
+    "build:umd": "cross-env NODE_ENV=development BABEL_ENV=build rollup -c -i src/index.js -o dist/bem.js",
+    "build:umd:min": "cross-env NODE_ENV=production BABEL_ENV=buildProd rollup -c -i src/index.js -o dist/bem.min.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/JPorry/bem"
   },
-  "keywords": ["bem", "css", "classnames"],
+  "keywords": [
+    "bem",
+    "css",
+    "classnames"
+  ],
   "author": "Javier Porrero <porrero.javier@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/JPorry/bem/issues"
   },
-  "files": ["dist", "lib", "es"],
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -36,6 +41,7 @@
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-3": "^6.24.1",
+    "coveralls": "^3.0.1",
     "cross-env": "^5.1.3",
     "in-publish": "^2.0.0",
     "jest": "^22.1.4",
